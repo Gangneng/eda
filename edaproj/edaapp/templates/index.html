@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@800&display=swap" rel="stylesheet">
+    <title>Heart Attack EDA</title>
+</head>
+<body>
+    <div class="title" id="title">
+        {% load static %}
+        <img src="{% static 'image/heartattack.jpg' %}" alt="main_image" class = "main_image">
+        <h1 class="title_text">Heart Attack EDA</h1>
+    </div>
+    <div class="menu">
+        <a href="#first" class="btn btn-dark" style="font-size:1vw"><br><br>1. 분석 목적과 변수 확인</a>
+        <a href="#second" class="btn btn-dark" style="font-size:1vw"><br><br>2. 데이터 톺아 보기</a>
+        <a href="#third" class="btn btn-dark" style="font-size:1vw"><br><br>3. 가설 목록 및 검증 결과</a>
+    </div>
+    <div class="first" id="first">
+        <h1>1. 분석 목적과 변수 확인</h1>
+        <br>
+        <br>
+        <br>
+        <p>분석 목적</p>
+        <div class="text">심장마비 가능성이 높은 사람들의 특징이 무엇일까?</div>
+        <br>
+        <br>
+        <p>변수</p>
+        <ul class="text">
+            <li>age : 나이</li>
+            <li>sex : 성별 남성이면 0, 여성이면 1</li>
+            <li>cp : 가슴 통증 종류</li>
+                <ul>
+                    <li>1 : 전형적 협심증</li>
+                    <li>2 : 비정형 협심증</li>
+                    <li>3 : 비 협심증</li>
+                    <li>4 : 무증상</li>
+                </ul>
+            <li>trtpbs : 혈압</li>
+            <li>chol : BMI 센서를 통해 가져온 콜레스테롤</li>
+            <li>fbs : 공복 혈당이 정상이면 0, 120 이상이면 1</li>
+            <li>restecg : 휴식 심전도 결과</li>       
+                <ul> 
+                    <li>0 : 정상</li>
+                    <li>1 : ST-T파 이상</li>
+                    <li>2 : 좌심실 비대 가능성을 보이거나 확실한 경우</li>
+                </ul>
+            <li>thalachh : 최대 심박수 달성</li>
+            <li>exng : 운동으로 인한 협심증</li>
+            <li>oldpeak : 이전 피크</li>
+            <li>output : 심장마비 가능성 적으면 0, 많으면 1</li>
+        </ul>
+    </div>
+    <div class="second" id="second">
+        <h1>2. 데이터 톺아 보기</h1>
+        <br>
+        <br>
+        <br>
+        {% load static %}
+        <img src="{% static 'image/dataset_corr.png' %}" alt="correlation">
+        <br>
+        <br>
+        <div class='text'>결측치는 존재하지 않음</div>
+    </div>
+    <div class="third" id="third">
+        <h1>3. 가설 및 검증 결과</h1>
+        <br>
+        <br>
+        <br>
+        <h2 class='text'>1. 나이가 많으면 심장마비 가능성이 높을 것이다.</h2>
+        <br>
+        <br>
+        {% load static %}
+        <img src="{% static 'image/first.png' %}">
+        <div class="result">40-50대에서 심장마비 가능성이 가장 많다.</p>
+        <br>
+        <br>
+
+        <h2 class='text'>2. 심장마비 가능성 여부는 성별과 상관관계가 있다.</h2>
+        <br>
+        <br>
+        {% load static %}
+        <img src="{% static 'image/second.png' %}">
+        <div class="result">남성이 여성에 비해 심장마비 확률이 압도적으로 높았다.</p>
+        <br>
+        <br>
+
+        <h2 class='text'>3. 가슴 통증의 종류와 심장마비 가능성 여부는 상관관계가 있다.</h2>
+        <br>
+        <br>
+        {% load static %}
+        <img src="{% static 'image/third.png' %}">
+        <div class="result">비정형 협심증, 비협심증 환자는 심장마비 확률이 더 높다.</p>
+        <br>
+        <br>
+
+        <h2 class='text'>4. 최대 심박수가 높으면 심장 마비 가능성이 높을 것이다.</h2>
+        <br>
+        <br>
+        {% load static %}
+        <img src="{% static 'image/fourth.png' %}">
+        <div class="result">최대 심박수가 140 이상으로 넘어가면 심장 마비 가능성이 더 높아진다.</p>
+        <br>
+        <br>
+
+        <h2 class='text'>5. 나이가 많으면 많아질수록 콜레스테롤이 높아질 것이고 그에 따라 심장 마비 가능성이 높아질 것이다.</h2>
+        <br>
+        <br>
+        {% load static %}
+        <img src="{% static 'image/fifth.png' %}">
+        <div class="result">나이와 콜레스테롤은 큰 관계가 없고, 콜레스테롤 자체도 심장 마비와는 큰 관련성을 나타내고 있지 않다.</p>
+        <br>
+        <br>
+            
+        
+    </div>
+    <a href="#title" class="btn btn-dark" id = "top"  style="font-size:0.2vw;">Top</a>
+</body>
+</html>
